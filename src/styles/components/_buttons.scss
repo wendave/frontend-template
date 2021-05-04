@@ -1,0 +1,64 @@
+//main: ../main.scss
+
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.btn {
+  padding: 10px 30px;
+  font-family: $font-helveticaneue-bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  border: 2px solid;
+  border-radius: 0;
+  pointer-events: all;
+  transition: .35s ease-in-out all;
+
+  @include on-event() {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.btn-white {
+  color: $brand-color;
+  border-color: #fff;
+  background-color: #fff;
+
+  @include on-event() {
+    color: #fff;
+    border-color: $brand-color;
+    background-color: $brand-color;
+  }
+}
+
+.btn-white-outline {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+
+  @include on-event() {
+    color: $brand-color;
+    background-color: #fff;
+  }
+}
+
+.btn-blue {
+  color: #fff;
+  border-color: $brand-color;
+  background-color: $brand-color;
+
+  @include on-event() {
+    color: $brand-color;
+    border-color: #fff;
+    background-color: #fff;
+  }
+}
+
+@media (max-width: 991px) {
+  .btn {
+    padding: 8px 25px;
+  }
+}

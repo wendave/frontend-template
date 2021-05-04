@@ -1,0 +1,315 @@
+//main: ../main.scss
+
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.header-main {
+  position: fixed;
+  top: 0;
+  right: initial;
+  bottom: initial;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 -5px 15px 0 #000;
+  opacity: 1;
+  transition: .35s ease-in-out all;
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: $brand-color;
+
+    @include on-event() {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+
+  .logo-image {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    max-height: 76px;
+    transition: .35s ease-in-out all;
+  }
+
+  .logo-text {
+    padding-left: 15px;
+    font-family: $font-helveticaneue-bold;
+    font-size: 22px;
+    transition: .35s ease-in-out all;
+  }
+
+  .navbar {
+    transition: .35s ease-in-out all;
+    
+    .navbar-nav {
+      & > li:not(:first-child) {
+        margin-left: 20px;
+      }
+
+      a {
+        position: relative;
+        padding: 2px;
+        font-family: $font-helveticaneue-bold;
+        font-size: 18px;
+        letter-spacing: .5px;
+        line-height: 2;
+        color: $brand-color;
+        text-transform: uppercase;
+        transition: .35s ease-in-out all;
+        text-decoration: none;
+        outline: none;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: initial;
+          right: initial;
+          bottom: -10px;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: $brand-color;
+          opacity: 0;
+          transition: .35s ease-in-out all;
+        }
+
+        @include on-event() {
+          &:before {
+            bottom: 0;
+            opacity: 1;
+          }
+        }
+      }
+    
+      .menu-dropdown {
+        @include on-event() {
+          ul {
+            opacity: 1;
+            top: 63px;
+            pointer-events: all;
+          }
+        }
+
+        & > a {
+          padding-right: 20px;
+
+          &:before,
+          &:after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            bottom: 0;
+            left: initial;
+            width: 10px;
+            height: 3px;
+            margin: auto;
+            background-color: $brand-color;
+            opacity: 1;
+          }
+
+          &:before {            
+            right: 0;
+            transform: rotate(45deg);
+          }
+
+          &:after {
+            right: -5px;
+            transform: rotate(-45deg);
+          }
+        }
+
+        ul {
+          position: absolute;
+          top: 73px;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          background-color: $brand-color;
+          box-shadow: 0px 5px 10px 0px #343a75;
+          opacity: 0;
+          pointer-events: none;
+          transition: .35s ease-in-out all;
+
+          a {
+            display: flex;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: #fff;
+            background-color: $brand-color;
+    
+            &:before {
+              display: none;
+            }
+    
+            @include on-event() {
+              background-color: #343a75;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.header-scrolled {
+    .logo-image {
+      max-height: 50px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+    }
+
+    .navbar {
+      padding: 5px;
+
+      a {
+        font-size: 15px;
+      }
+
+      .menu-dropdown {
+        &:hover ul {
+          top: 44px;
+        }
+
+        ul {
+          top: 55px;
+          
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .navbar {
+      .container {
+        max-width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .logo-image {
+      max-height: 60px;
+    }
+
+    .navbar {
+      .navbar-nav {
+        a {
+          font-size: 16px;
+          letter-spacing: 0;
+        }
+
+        .menu-dropdown {
+          ul {
+            top: 67px;
+          }
+
+          &:hover ul {
+            top: 52px;
+          }
+        }
+      }
+    }
+
+    &.header-scrolled {
+      .logo-image {
+        max-height: 45px;
+      }
+
+      .navbar-nav .menu-dropdown:hover ul {
+        top: 45px;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .logo-image {
+      max-height: 45px;
+    }
+
+    .logo-text {
+      padding-left: 10px;
+      font-size: 16px;
+    }
+
+    .navbar-toggler {
+      padding-right: 0;
+    }
+
+    .navbar {
+      .navbar-collapse {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 2px solid $brand-color;
+        border-bottom: 2px solid $brand-color;
+        pointer-events: none;
+        transition: .35s ease-in-out all;
+
+        &.show {
+          pointer-events: all;
+        }
+      }
+
+      .navbar-nav {
+        padding: 5px 15px;
+
+        & > li:not(:first-child) {
+          margin-left: 0;
+        }
+
+        .menu-dropdown:hover ul,
+        .menu-dropdown ul {
+          position: relative;
+          top: initial;
+          background: transparent;
+          opacity: 1;
+          box-shadow: none;
+
+          a {
+            padding: 4px 20px;
+            color: $brand-color;
+            background-color: transparent;
+          }
+        }
+
+        a {
+          &:before,
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &.header-scrolled {
+      .logo-image {
+        max-height: 35px;
+      }
+
+      .logo-text {
+        font-size: 14px;
+      }
+
+      .navbar-collapse {
+        top: 50px;
+      }
+
+      .navbar .menu-dropdown ul a {
+        font-size: 14px;
+      }
+    }
+  }
+}

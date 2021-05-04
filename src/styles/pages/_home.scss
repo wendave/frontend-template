@@ -1,0 +1,218 @@
+//main: ../main.scss
+
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+.page-home {
+  .blog {
+    position: relative;    
+    padding: 100px 0;
+    color: #fff;
+
+    .bg-image {
+      position: absolute;
+      top: 0;
+      right: initial;
+      bottom: initial;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-image: url(./assets/images/bg-blog.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      filter: blur(1px);
+    }
+
+    .overlay {
+      background-color: #444;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    h2 {
+      font-family: $font-helveticaneue-bold;
+      font-size: 38px;
+      text-align: center;
+    }
+
+    .article {
+      &-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      &-item {
+        width: 33.33%;
+        padding: 15px;
+      }
+
+      &-link {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        height: 300px;
+        overflow: hidden;
+        text-align: center;
+        color: #fff;
+        transition: .35s ease-in-out all;
+
+        @include on-event() {
+          text-decoration: none;
+          outline: none;
+
+          .article-thumbnail {
+            transform: scale(1.1);
+          }
+
+          .article-content {
+            transform: scale(.3);
+            opacity: 0;
+          }
+
+          .article-button {
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          .overlay {
+            background-color: $brand-color;
+            opacity: .85;
+          }
+        }
+
+        .overlay {
+          background-color: #000;
+          opacity: .7;
+        }
+      }
+
+      &-thumbnail {
+        position: absolute;
+        top: 0;
+        right: initial;
+        bottom: initial;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        pointer-events: none;
+        transform: scale(1);
+        transition: .35s ease-in-out all;
+      }
+      
+      &-content {
+        position: relative;
+        z-index: 1;
+        opacity: 1;
+        transform: scale(1);
+        transition: .35s ease-in-out all;
+      }
+
+      &-title {
+        margin-bottom: 15px;
+        font-family: $font-helveticaneue-bold;
+        font-size: 20px;
+      }
+
+      &-date {
+        position: relative;
+        padding-top: 15px;
+        margin: 0;
+        font-family: $font-helveticaneue-light;
+        font-size: 12px;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: initial;
+          left: 0;
+          width: 50px;
+          height: 2px;
+          margin: auto;
+          background-color: #fff;
+        }
+      }
+
+      &-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.5);
+        transition: .35s ease-in-out all;
+      }
+    }
+
+    .view-all {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .blog {
+      .article-link {
+        height: 280px;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .blog {
+      .article-item {
+        width: 50%;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .blog {
+      &:before {
+        border-bottom-width: 40px;
+      }
+
+      .article {
+        &-item {
+          padding: 10px;
+        }
+
+        &-link {
+          height: 240px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .blog {
+      .article-item {
+        width: 340px;
+        max-width: 100%;
+      }
+    }
+  }
+}

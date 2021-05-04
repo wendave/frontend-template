@@ -1,0 +1,11 @@
+//main: ../main.scss
+
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+@include font-face($font-helveticaneue, $base-url + 'fonts/', 'helveticaneue', 'helveticaneue');
+@include font-face($font-helveticaneue-bold, $base-url + 'fonts/', 'helveticaneue-bold', 'helveticaneue-bold');
+@include font-face($font-helveticaneue-light, $base-url + 'fonts/', 'helveticaneue-light', 'helveticaneue-light');
+@include font-face($font-helvetica-black, $base-url + 'fonts/', 'helvetica-black', 'helvetica-black');
+@include font-face($font-helvetica-black-hollow, $base-url + 'fonts/', 'helvetica-black-hollow', 'helvetica-black-hollow');
